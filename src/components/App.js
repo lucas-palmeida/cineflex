@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import FilmesPage from "../pages/FilmesPage";
 import SessoesPage from "../pages/SessoesPage";
+import AssentosPage from "../pages/AssentosPage";
 
 export default function App() {
   return (
@@ -11,7 +12,8 @@ export default function App() {
         <Header />
         <Routes>
           <Route path="/" element={<FilmesPage />} />
-          <Route path="/sessoes/:idFilme" element={<SessoesPage />} />  
+          <Route path="/sessoes/:idFilme" element={<SessoesPage />} />
+          <Route path="/assentos/:idSessao" element={<AssentosPage />} />
         </Routes>
       </ContainerApp>
     </BrowserRouter>
