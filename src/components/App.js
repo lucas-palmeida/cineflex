@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import FilmesPage from "../pages/FilmesPage";
+import SessoesPage from "../pages/SessoesPage";
 
 export default function App() {
   return (
@@ -9,7 +10,8 @@ export default function App() {
       <ContainerApp>
         <Header />
         <Routes>
-          <Route path="/" element={<FilmesPage />} /> 
+          <Route path="/" element={<FilmesPage />} />
+          <Route path="/sessoes/:idFilme" element={<SessoesPage />} />  
         </Routes>
       </ContainerApp>
     </BrowserRouter>

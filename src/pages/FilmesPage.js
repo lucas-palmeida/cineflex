@@ -7,8 +7,7 @@ export default function ListaFilmes() {
     const [filmes, setFilmes] = useState(undefined);
 
     useEffect(() => {
-        const URL = "https://mock-api.driven.com.br/api/v8/cineflex/movies";
-        const promise = axios.get(URL);
+        const promise = axios.get("https://mock-api.driven.com.br/api/v8/cineflex/movies");
         promise.then((res) => setFilmes(res.data));
         promise.catch((err) => console.log(err.response.data));
     }, []);
@@ -39,7 +38,7 @@ const ContainerFilmes = styled.section`
     flex-wrap: wrap;
 `;
 
-const TituloEtapa = styled.h2`
+export const TituloEtapa = styled.h2`
     width: 100%;
     height: 110px;
     box-sizing: border-box;
