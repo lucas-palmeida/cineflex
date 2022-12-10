@@ -6,20 +6,18 @@ import {
 } from "./SessoesPage";
 import { TituloEtapa } from "./FilmesPage";
 import ItemAssento from "../components/ItemAssento";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function AssentosPage() {
+export default function AssentosPage(props) {
+  const { sessao, name, cpf, ids, setSessao, setName, setCpf, setIds } = props.dados; 
   const { idSessao } = useParams();
-  const [sessao, setSessao] = useState(undefined);
-  const [name, setName] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [ids, setIds] = useState([]);
+  const navigate = useNavigate();
 
   function selecionarAssento(id) {
-    if(ids.some(assento => assento === id)) {
-      const idsAtualizados = ids.filter(assento => assento !== id);
+    if (ids.some((assento) => assento === id)) {
+      const idsAtualizados = ids.filter((assento) => assento !== id);
       setIds(idsAtualizados);
     } else {
       setIds([...ids, id]);
@@ -28,16 +26,14 @@ export default function AssentosPage() {
 
   function fazerReserva(e) {
     e.preventDefault();
-    const reserva = {ids, name, cpf};
-    const URL = "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many";
+    const reserva = { ids, name, cpf };
+    const URL =
+      "https://mock-api.driven.com.br/api/v8/cineflex/seats/book-many";
     const promise = axios.post(URL, reserva);
     promise.then((res) => {
-      console.log(res.data);
+      navigate("/sucesso");
     });
     promise.catch((err) => console.log(err.response.data));
-    setName("");
-    setCpf("");
-    setIds([]);
   }
 
   useEffect(() => {
@@ -57,7 +53,13 @@ export default function AssentosPage() {
       <TituloEtapa>Selecione o(s) assento(s)</TituloEtapa>
       <ContainerAssentos>
         {sessao.seats.map((s) => {
-          return <ItemAssento key={s.id} seat={s} selecionarAssento={selecionarAssento} />;
+          return (
+            <ItemAssento
+              key={s.id}
+              seat={s}
+              selecionarAssento={selecionarAssento}
+            />
+          );
         })}
       </ContainerAssentos>
       <LegendaAssentos>
@@ -183,7 +185,7 @@ const InputComprador = styled.input`
   box-sizing: border-box;
   border-radius: 3px;
   border: 1px solid #d4d4d4;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 21px;

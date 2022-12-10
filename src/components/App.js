@@ -4,8 +4,26 @@ import Header from "./Header";
 import FilmesPage from "../pages/FilmesPage";
 import SessoesPage from "../pages/SessoesPage";
 import AssentosPage from "../pages/AssentosPage";
+import ReservaPage from "../pages/ReservaPage";
+import { useState } from "react";
 
 export default function App() {
+  const [sessao, setSessao] = useState(undefined);
+  const [name, setName] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [ids, setIds] = useState([]);
+
+  const dados = {
+    sessao,
+    name,
+    cpf,
+    ids,
+    setSessao,
+    setName,
+    setCpf,
+    setIds
+  }
+
   return (
     <BrowserRouter>
       <ContainerApp>
@@ -13,7 +31,8 @@ export default function App() {
         <Routes>
           <Route path="/" element={<FilmesPage />} />
           <Route path="/sessoes/:idFilme" element={<SessoesPage />} />
-          <Route path="/assentos/:idSessao" element={<AssentosPage />} />
+          <Route path="/assentos/:idSessao" element={<AssentosPage dados={dados} />} />
+          <Route path="/sucesso" element={<ReservaPage dados={dados} />} />
         </Routes>
       </ContainerApp>
     </BrowserRouter>

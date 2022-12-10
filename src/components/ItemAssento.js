@@ -4,17 +4,22 @@ import styled from "styled-components";
 export default function ItemAssento(props) {
   const { seat, selecionarAssento } = props;
   const { name, isAvailable } = seat;
-  const [ isSelected, setIsSelected ] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
 
   function selecionado() {
-    setIsSelected(!isSelected);
-    selecionarAssento(name);
+    if(!isAvailable) {
+      alert("Esse assento não está disponível");
+    } else {
+      setIsSelected(!isSelected);
+      selecionarAssento(name);
+    }
   }
 
   return (
     <BotaoAssento
-      className={`${!isAvailable ? "indisponivel" : isSelected ? "selecionado" : ""}`}
-      disabled={!isAvailable}
+      className={`${
+        !isAvailable ? "indisponivel" : isSelected ? "selecionado" : ""
+      }`}
       onClick={selecionado}
     >
       {name}
