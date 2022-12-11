@@ -21,8 +21,8 @@ export default function App() {
     setSessao,
     setName,
     setCpf,
-    setIds
-  }
+    setIds,
+  };
 
   return (
     <BrowserRouter>
@@ -31,7 +31,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<FilmesPage />} />
           <Route path="/sessoes/:idFilme" element={<SessoesPage />} />
-          <Route path="/assentos/:idSessao" element={<AssentosPage dados={dados} />} />
+          <Route
+            path="/assentos/:idSessao"
+            element={<AssentosPage dados={dados} />}
+          />
           <Route path="/sucesso" element={<ReservaPage dados={dados} />} />
         </Routes>
       </ContainerApp>

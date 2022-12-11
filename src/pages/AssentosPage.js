@@ -11,7 +11,8 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 export default function AssentosPage(props) {
-  const { sessao, name, cpf, ids, setSessao, setName, setCpf, setIds } = props.dados; 
+  const { sessao, name, cpf, ids, setSessao, setName, setCpf, setIds } =
+    props.dados;
   const { idSessao } = useParams();
   const navigate = useNavigate();
 
@@ -84,6 +85,7 @@ export default function AssentosPage(props) {
           placeholder="Digite seu nome..."
           value={name}
           onChange={(e) => setName(e.target.value)}
+          data-test="client-name"
           required
         />
         <br />
@@ -91,9 +93,11 @@ export default function AssentosPage(props) {
         <InputComprador
           id="cpf"
           type="text"
+          pattern="^([0-9]){3}\.([0-9]){3}\.([0-9]){3}-([0-9]){2}$"
           placeholder="Digite seu CPF..."
           value={cpf}
           onChange={(e) => setCpf(e.target.value)}
+          data-test="client-cpf"
           required
         />
         <div>
@@ -101,7 +105,7 @@ export default function AssentosPage(props) {
         </div>
       </ContainerComprador>
       <ContainerFooter>
-        <ContainerBanner>
+        <ContainerBanner data-test="footer">
           <img src={sessao.movie.posterURL} alt={sessao.movie.title} />
         </ContainerBanner>
         <div>

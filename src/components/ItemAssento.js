@@ -7,7 +7,7 @@ export default function ItemAssento(props) {
   const [isSelected, setIsSelected] = useState(false);
 
   function selecionado() {
-    if(!isAvailable) {
+    if (!isAvailable) {
       alert("Esse assento não está disponível");
     } else {
       setIsSelected(!isSelected);
@@ -21,6 +21,7 @@ export default function ItemAssento(props) {
         !isAvailable ? "indisponivel" : isSelected ? "selecionado" : ""
       }`}
       onClick={selecionado}
+      data-test="seat"
     >
       {name}
     </BotaoAssento>

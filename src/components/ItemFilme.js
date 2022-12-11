@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function ItemFilme(props) {
   const { filme } = props;
   return (
-    <ContainerFilme>
+    <ContainerFilme data-test="movie">
       <img src={filme.posterURL} alt={filme.title} />
     </ContainerFilme>
   );

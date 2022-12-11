@@ -38,7 +38,7 @@ export default function SessoesPage() {
         })}
       </ul>
       <ContainerFooter>
-        <ContainerBanner>
+        <ContainerBanner data-test="footer">
           <img src={filme.posterURL} alt={filme.title} />
         </ContainerBanner>
         <p>{filme.title}</p>

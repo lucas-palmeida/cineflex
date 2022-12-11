@@ -5,7 +5,7 @@ export default function ReservaPage(props) {
   const { sessao, name, cpf, ids, setSessao, setName, setCpf, setIds } =
     props.dados;
   const navigate = useNavigate();
-  
+
   function voltarHome() {
     setName("");
     setCpf("");
@@ -18,26 +18,28 @@ export default function ReservaPage(props) {
     <ContainerReserva>
       <TituloSucesso>Pedido feito com sucesso!</TituloSucesso>
       <InfoReserva>
-        <div>
+        <div data-test="movie-info">
           <h3>Filme e sessão</h3>
           <p>{sessao.movie.title}</p>
           <p>
             {sessao.day.date} {sessao.name}
           </p>
         </div>
-        <div>
+        <div data-test="seats-info">
           <h3>Ingressos</h3>
           {ids.map((i) => {
             return <p key={i}>Assento {i}</p>;
           })}
         </div>
-        <div>
+        <div data-test="client-info">
           <h3>Comprador</h3>
           <p>Nome: {name}</p>
           <p>CPF: {cpf}</p>
         </div>
       </InfoReserva>
-      <BotaoHome onClick={voltarHome}>Voltar para Home</BotaoHome>
+      <BotaoHome onClick={voltarHome} data-test="go-home-btn">
+        Voltar para Home
+      </BotaoHome>
     </ContainerReserva>
   );
 }

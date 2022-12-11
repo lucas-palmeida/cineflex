@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 export default function ItemSessao({ showtimes, weekday, date }) {
   return (
     <ContainerSessao>
-      <p>
+      <p data-test="movie-day">
         {weekday} - {date}
       </p>
       <div>
         {showtimes.map((s) => {
           return (
-            <Link key={s.id} to={`/assentos/${s.id}`}>
+            <Link key={s.id} to={`/assentos/${s.id}`} data-test="showtime">
               <button>{s.name}</button>
             </Link>
           );
