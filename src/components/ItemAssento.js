@@ -21,7 +21,6 @@ export default function ItemAssento(props) {
         !isAvailable ? "indisponivel" : isSelected ? "selecionado" : ""
       }`}
       onClick={selecionado}
-      data-test="seat"
     >
       {name}
     </BotaoAssento>

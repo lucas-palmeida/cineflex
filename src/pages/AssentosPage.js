@@ -59,6 +59,7 @@ export default function AssentosPage(props) {
               key={s.id}
               seat={s}
               selecionarAssento={selecionarAssento}
+              data-test="seat"
             />
           );
         })}
@@ -77,7 +78,7 @@ export default function AssentosPage(props) {
           <p>Indisponível</p>
         </div>
       </LegendaAssentos>
-      <ContainerComprador onSubmit={fazerReserva}>
+      <ContainerComprador onSubmit={fazerReserva} data-test="book-seat-btn">
         <label htmlFor="name">Nome do comprador</label>
         <InputComprador
           id="name"
@@ -104,7 +105,7 @@ export default function AssentosPage(props) {
           <BotaoReserva type="submit" value="Reservar assento(s)" />
         </div>
       </ContainerComprador>
-      <ContainerFooter>
+      <ContainerFooter data-test="footer">
         <ContainerBanner data-test="footer">
           <img src={sessao.movie.posterURL} alt={sessao.movie.title} />
         </ContainerBanner>

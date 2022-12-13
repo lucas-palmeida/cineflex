@@ -41,7 +41,7 @@ export default function SessoesPage() {
         <ContainerBanner data-test="footer">
           <img src={filme.posterURL} alt={filme.title} />
         </ContainerBanner>
-        <p>{filme.title}</p>
+        <p data-test="footer">{filme.title}</p>
       </ContainerFooter>
     </ContainerSessoes>
   );

@@ -10,8 +10,8 @@ export default function ItemSessao({ showtimes, weekday, date }) {
       <div>
         {showtimes.map((s) => {
           return (
-            <Link key={s.id} to={`/assentos/${s.id}`} data-test="showtime">
-              <button>{s.name}</button>
+            <Link key={s.id} to={`/assentos/${s.id}`}>
+              <button data-test="showtime">{s.name}</button>
             </Link>
           );
         })}
